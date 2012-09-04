@@ -1,16 +1,18 @@
 //
 //  AppDelegate.m
-//  cocos2d-mario
+//  Bandai
 //
-//  Created by Mark Stultz on 9/3/12.
+//  Created by Mark Stultz on 8/30/12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "HelloWorldLayer.h"
+#import "Game.h"
 
-@implementation cocos2d_marioAppDelegate
-@synthesize window=window_, glView=glView_;
+@implementation AppDelegate
+
+@synthesize window = _window;
+@synthesize glView = _glView;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -20,7 +22,7 @@
 	[director setDisplayStats:YES];
 	
 	// connect the OpenGL view with the director
-	[director setView:glView_];
+	[director setView:_glView];
 
 	// EXPERIMENTAL stuff.
 	// 'Effects' don't work correctly when autoscale is turned on.
@@ -28,12 +30,12 @@
 	[director setResizeMode:kCCDirectorResize_AutoScale];
 	
 	// Enable "moving" mouse event. Default no.
-	[window_ setAcceptsMouseMovedEvents:NO];
+	[_window setAcceptsMouseMovedEvents:NO];
 	
 	// Center main window
-	[window_ center];
+	[_window center];
 	
-	[director runWithScene:[HelloWorldLayer scene]];
+	[director runWithScene:[Game scene]];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed: (NSApplication *) theApplication
@@ -44,7 +46,7 @@
 - (void)dealloc
 {
 	[[CCDirector sharedDirector] end];
-	[window_ release];
+	[_window release];
 	[super dealloc];
 }
 

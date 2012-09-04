@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>mario_01.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{38,2},{16,28}}</string>
+			<key>offset</key>
+			<string>{0,-1}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,3},{16,28}}</string>
+			<key>sourceSize</key>
+			<string>{16,32}</string>
+		</dict>
+		<key>mario_02.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{20,2},{16,28}}</string>
+			<key>offset</key>
+			<string>{0,-1}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,3},{16,28}}</string>
+			<key>sourceSize</key>
+			<string>{16,32}</string>
+		</dict>
+		<key>mario_03.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{2,2},{16,28}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,2},{16,28}}</string>
+			<key>sourceSize</key>
+			<string>{16,32}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>realTextureFileName</key>
+		<string>player.png</string>
+		<key>size</key>
+		<string>{64,32}</string>
+		<key>smartupdate</key>
+		<string>$TexturePacker:SmartUpdate:82cf4f4b60fc17f3cb96c6434deaba45$</string>
+		<key>textureFileName</key>
+		<string>player.png</string>
+	</dict>
+</dict>
+</plist>

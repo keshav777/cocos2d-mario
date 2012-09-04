@@ -122,7 +122,12 @@
 		D82D7EA615F5B1270004DE94 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D82D7EA515F5B1270004DE94 /* vec4.c */; };
 		D82D7EAB15F5B1270004DE94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D82D7EAA15F5B1270004DE94 /* main.m */; };
 		D82D7EAE15F5B1270004DE94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D82D7EAD15F5B1270004DE94 /* AppDelegate.m */; };
-		D82D7EB115F5B1270004DE94 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D82D7EB015F5B1270004DE94 /* HelloWorldLayer.m */; };
+		D8D112BF15F5B1FE00C5DCBF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D112BC15F5B1FE00C5DCBF /* background.png */; };
+		D8D112C015F5B1FE00C5DCBF /* player.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8D112BD15F5B1FE00C5DCBF /* player.plist */; };
+		D8D112C115F5B1FE00C5DCBF /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D112BE15F5B1FE00C5DCBF /* player.png */; };
+		D8D112C215F5B22B00C5DCBF /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D112B515F5B1E500C5DCBF /* Background.m */; };
+		D8D112C315F5B22B00C5DCBF /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D112B715F5B1E500C5DCBF /* Game.m */; };
+		D8D112C415F5B22B00C5DCBF /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D112B915F5B1E500C5DCBF /* Player.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -377,8 +382,15 @@
 		D82D7EAA15F5B1270004DE94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D82D7EAC15F5B1270004DE94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D82D7EAD15F5B1270004DE94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D82D7EAF15F5B1270004DE94 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		D82D7EB015F5B1270004DE94 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		D8D112B415F5B1E500C5DCBF /* Background.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		D8D112B515F5B1E500C5DCBF /* Background.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		D8D112B615F5B1E500C5DCBF /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		D8D112B715F5B1E500C5DCBF /* Game.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		D8D112B815F5B1E500C5DCBF /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		D8D112B915F5B1E500C5DCBF /* Player.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		D8D112BC15F5B1FE00C5DCBF /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
+		D8D112BD15F5B1FE00C5DCBF /* player.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = player.plist; path = Resources/player.plist; sourceTree = "<group>"; };
+		D8D112BE15F5B1FE00C5DCBF /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,7 +413,10 @@
 		D82D7D1F15F5B1250004DE94 = {
 			isa = PBXGroup;
 			children = (
-				D82D7D3A15F5B1250004DE94 /* cocos2d-mario */,
+				D8D112B215F5B1BA00C5DCBF /* Code */,
+				D82D7D3B15F5B1250004DE94 /* Resources */,
+				D82D7D4815F5B1250004DE94 /* libs */,
+				D82D7EA815F5B1270004DE94 /* Supporting Files */,
 				D82D7D2D15F5B1250004DE94 /* Frameworks */,
 				D82D7D2B15F5B1250004DE94 /* Products */,
 			);
@@ -428,29 +443,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D82D7D3A15F5B1250004DE94 /* cocos2d-mario */ = {
-			isa = PBXGroup;
-			children = (
-				D82D7EAC15F5B1270004DE94 /* AppDelegate.h */,
-				D82D7EAD15F5B1270004DE94 /* AppDelegate.m */,
-				D82D7EAF15F5B1270004DE94 /* HelloWorldLayer.h */,
-				D82D7EB015F5B1270004DE94 /* HelloWorldLayer.m */,
-				D82D7D3B15F5B1250004DE94 /* Resources */,
-				D82D7D4815F5B1250004DE94 /* libs */,
-				D82D7EA815F5B1270004DE94 /* Supporting Files */,
-			);
-			path = "cocos2d-mario";
-			sourceTree = "<group>";
-		};
 		D82D7D3B15F5B1250004DE94 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D82D7D3C15F5B1250004DE94 /* English.lproj */,
+				D8D112BC15F5B1FE00C5DCBF /* background.png */,
 				D82D7D4315F5B1250004DE94 /* fps_images.png */,
 				D82D7D4515F5B1250004DE94 /* icon.icns */,
 				D82D7D4715F5B1250004DE94 /* Info.plist */,
-				D82D7D3C15F5B1250004DE94 /* English.lproj */,
+				D8D112BD15F5B1FE00C5DCBF /* player.plist */,
+				D8D112BE15F5B1FE00C5DCBF /* player.png */,
 			);
 			name = Resources;
+			path = "cocos2d-mario";
 			sourceTree = "<group>";
 		};
 		D82D7D3C15F5B1250004DE94 /* English.lproj */ = {
@@ -474,6 +479,7 @@
 				D82D7E7615F5B1260004DE94 /* kazmath */,
 			);
 			name = libs;
+			path = "cocos2d-mario";
 			sourceTree = "<group>";
 		};
 		D82D7D4915F5B1250004DE94 /* cocos2d */ = {
@@ -815,6 +821,23 @@
 				D82D7EAA15F5B1270004DE94 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = "cocos2d-mario";
+			sourceTree = "<group>";
+		};
+		D8D112B215F5B1BA00C5DCBF /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				D82D7EAC15F5B1270004DE94 /* AppDelegate.h */,
+				D82D7EAD15F5B1270004DE94 /* AppDelegate.m */,
+				D8D112B415F5B1E500C5DCBF /* Background.h */,
+				D8D112B515F5B1E500C5DCBF /* Background.m */,
+				D8D112B615F5B1E500C5DCBF /* Game.h */,
+				D8D112B715F5B1E500C5DCBF /* Game.m */,
+				D8D112B815F5B1E500C5DCBF /* Player.h */,
+				D8D112B915F5B1E500C5DCBF /* Player.m */,
+			);
+			name = Code;
+			path = "cocos2d-mario";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -873,6 +896,9 @@
 				D82D7D4415F5B1250004DE94 /* fps_images.png in Resources */,
 				D82D7D4615F5B1250004DE94 /* icon.icns in Resources */,
 				D82D7E8C15F5B1260004DE94 /* ChangeLog in Resources */,
+				D8D112BF15F5B1FE00C5DCBF /* background.png in Resources */,
+				D8D112C015F5B1FE00C5DCBF /* player.plist in Resources */,
+				D8D112C115F5B1FE00C5DCBF /* player.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +909,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D112C215F5B22B00C5DCBF /* Background.m in Sources */,
+				D8D112C315F5B22B00C5DCBF /* Game.m in Sources */,
+				D8D112C415F5B22B00C5DCBF /* Player.m in Sources */,
 				D82D7D4C15F5B1250004DE94 /* CCAction.m in Sources */,
 				D82D7D4F15F5B1250004DE94 /* CCActionCamera.m in Sources */,
 				D82D7D5215F5B1250004DE94 /* CCActionCatmullRom.m in Sources */,
@@ -987,7 +1016,6 @@
 				D82D7EA615F5B1270004DE94 /* vec4.c in Sources */,
 				D82D7EAB15F5B1270004DE94 /* main.m in Sources */,
 				D82D7EAE15F5B1270004DE94 /* AppDelegate.m in Sources */,
-				D82D7EB115F5B1270004DE94 /* HelloWorldLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,6 +1139,7 @@
 				D82D7EB615F5B1270004DE94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
