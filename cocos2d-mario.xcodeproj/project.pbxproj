@@ -131,6 +131,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D81EFBC115FB0B54005B65B3 /* GameConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
 		D82D7D2A15F5B1250004DE94 /* cocos2d-mario.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cocos2d-mario.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82D7D2E15F5B1250004DE94 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D82D7D3015F5B1250004DE94 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -833,6 +834,7 @@
 				D8D112B515F5B1E500C5DCBF /* Background.m */,
 				D8D112B615F5B1E500C5DCBF /* Game.h */,
 				D8D112B715F5B1E500C5DCBF /* Game.m */,
+				D81EFBC115FB0B54005B65B3 /* GameConstants.h */,
 				D8D112B815F5B1E500C5DCBF /* Player.h */,
 				D8D112B915F5B1E500C5DCBF /* Player.m */,
 			);

@@ -14,10 +14,8 @@
 
 @interface Game (Private)
 
-- (void)setMovingLeft:(BOOL)moving;
-- (void)setMovingRight:(BOOL)moving;
-- (void)moveLeft;
-- (void)moveRight;
+- (void)updateMovement;
+- (void)updateCamera;
 
 @end
 
@@ -28,6 +26,8 @@
 	self = [super init];
 	if( self != NULL )
 	{
+	
+	
 		m_player = [[Player alloc] init];
 		m_background = [[Background alloc] init];
 		
@@ -67,6 +67,10 @@
 
 - (void)update:(ccTime)deltaTime
 {
+	[self updateMovement];
+	[self updateCamera];
+	[m_player update:deltaTime];
+
 	[m_background updateFromRect:m_cameraRect];
 }
 
@@ -86,7 +90,7 @@
 			case 'a':
 			case 'A':
 			case NSLeftArrowFunctionKey:
-				[self setMovingLeft:YES];
+				m_movingLeft = YES;
 				return YES;
 
 			case 's':
@@ -98,7 +102,7 @@
 			case 'd':
 			case 'D':
 			case NSRightArrowFunctionKey:
-				[self setMovingRight:YES];
+				m_movingRight = YES;
 				return YES;
 			
 			default:
@@ -125,7 +129,7 @@
 			case 'a':
 			case 'A':
 			case NSLeftArrowFunctionKey:
-				[self setMovingLeft:NO];
+				m_movingLeft = NO;
 				return YES;
 
 			case 's':
@@ -137,7 +141,7 @@
 			case 'd':
 			case 'D':
 			case NSRightArrowFunctionKey:
-				[self setMovingRight:NO];
+				m_movingRight = NO;
 				return YES;
 			
 			default:
@@ -148,48 +152,40 @@
 	return NO;
 }
 
-
-- (void)setMovingLeft:(BOOL)moving
+- (void)updateMovement
 {
-	if( moving != m_movingLeft )
+	if( m_movingLeft && m_movingRight )
 	{
-		m_movingLeft = moving;
-		if( m_movingLeft )
-		{
-			[self schedule:@selector(moveLeft)];
-		}
-		else
-		{
-			[self unschedule:@selector(moveLeft)];
-		}
+	//	[m_player setIdle];
+	}
+	else if( m_movingLeft )
+	{
+		[m_player moveLeft];
+	
+		//CGPoint position = m_player.position;
+		//position.x = MAX( 0.0f, position.x - m_moveSpeed );
+		//m_player.position = position;
+		//[m_player setRunning];
+	}
+	else if( m_movingRight )
+	{
+		[m_player moveRight];
+	
+		// TODO-MAS: Clamp to world bounds
+		//CGPoint position = m_player.position;
+		//position.x = position.x + m_moveSpeed;
+		//m_player.position = position;
+		//[m_player setRunning];
+	}
+	else
+	{
+		[m_player setIdle];
 	}
 }
 
-- (void)setMovingRight:(BOOL)moving
+- (void)updateCamera
 {
-	if( moving != m_movingRight )
-	{
-		m_movingRight = moving;
-		if( m_movingRight )
-		{
-			[self schedule:@selector(moveRight)];
-		}
-		else
-		{
-			[self unschedule:@selector(moveRight)];
-		}
-	}
-}
-
-- (void)moveLeft
-{
-	m_cameraRect.origin.x = MAX( 0.0f, m_cameraRect.origin.x - m_moveSpeed );
-}
-
-- (void)moveRight
-{
-	// TODO-MAS: Clamp to world bounds
-	m_cameraRect.origin.x = m_cameraRect.origin.x + m_moveSpeed;
+	
 }
 
 @end

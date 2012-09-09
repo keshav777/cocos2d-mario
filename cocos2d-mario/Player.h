@@ -12,17 +12,37 @@
 @class CCScene;
 @class CCSprite;
 
+typedef enum
+{
+	Left,
+	Right,
+} Direction;
+
+typedef enum
+{
+	Idle,
+	Moving,
+} State;
+
 @interface Player : CCLayer
 {
-	CGSize m_playerSize;
-	BOOL m_playerFlipped;
+	CGPoint m_position;
+	CGSize m_size;
+	BOOL m_flipped;
+	float m_velocity;
+	float m_targetVelocity;
+	Direction m_dir;
+	State m_state;
 	CCSprite *m_playerSprite;
-	CCAction *m_walkAction;
-	CCAction *m_runAction;
-	
-	CCSprite *m_backgroundSprite;
-	CCSprite *m_backgroundSprite2;
+	NSMutableArray *m_frames;
 }
 
+@property (nonatomic, assign) CGPoint position;
+
+- (void)update:(ccTime)deltaTime;
+
+- (void)setIdle;
+- (void)moveLeft;
+- (void)moveRight;
 
 @end
