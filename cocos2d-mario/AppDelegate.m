@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Game.h"
+#import "GameConstants.h"
 
 @implementation AppDelegate
 
@@ -16,26 +17,33 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	CCDirectorMac *director = (CCDirectorMac*) [CCDirector sharedDirector];
-
-	// enable FPS and SPF
-	[director setDisplayStats:YES];
+	NSRect rect = NSMakeRect( 0.0f, 0.0f, gameWidth * gameSizeScale, gameHeight * gameSizeScale );
+	self.window = [[NSWindow alloc] initWithContentRect:rect styleMask:
+		(NSWindowCloseButton | NSWindowMiniaturizeButton) backing:NSBackingStoreBuffered defer:YES];
 	
-	// connect the OpenGL view with the director
+	self.glView = [[CCGLView alloc] initWithFrame:rect shareContext:nil];
+	[self.window setContentView:self.glView];
+
+	CCDirectorMac *director = (CCDirectorMac*) [CCDirector sharedDirector];
+	[director setProjection:kCCDirectorProjection2D];
+	[director setDisplayStats:YES];
 	[director setView:_glView];
 
 	// EXPERIMENTAL stuff.
 	// 'Effects' don't work correctly when autoscale is turned on.
 	// Use kCCDirectorResize_NoScale if you don't want auto-scaling.
-	[director setResizeMode:kCCDirectorResize_AutoScale];
+	//[director setResizeMode:kCCDirectorResize_AutoScale];
 	
 	// Enable "moving" mouse event. Default no.
 	[_window setAcceptsMouseMovedEvents:NO];
 	
 	// Center main window
+	[_window setTitle:@"Mario"];
 	[_window center];
+	[_window makeKeyAndOrderFront:self];
 	
-	[director runWithScene:[Game scene]];
+	CCScene *scene = [Game scene];
+	[director runWithScene:scene];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed: (NSApplication *) theApplication

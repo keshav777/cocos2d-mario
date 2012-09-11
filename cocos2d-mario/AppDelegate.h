@@ -10,8 +10,6 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
-	NSWindow	*window_;
-	CCGLView	*glView_;
 }
 
 @property (assign) IBOutlet NSWindow *window;

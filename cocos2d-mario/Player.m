@@ -51,9 +51,6 @@ static const float sc_topSpeedOscillation[ sc_oscillationFrameCount ] = { 1.0f, 
 		
 		[self buildPlayerSprite];
 		
-		CGSize winSize = [[CCDirector sharedDirector] winSize];
-		[self setPosition:CGPointMake( winSize.width * 0.5f, winSize.height * 0.5f )];
-
 		[self addChild:m_playerSprite z:1];
 	}
 	
@@ -145,8 +142,8 @@ static const float sc_topSpeedOscillation[ sc_oscillationFrameCount ] = { 1.0f, 
 	
 	m_size = frame1.rectInPixels.size;
 	m_playerSprite = [CCSprite spriteWithSpriteFrame:frame1];
-	[m_playerSprite setScale:2.0f];
 	[m_playerSprite.texture setAliasTexParameters];
+	m_playerSprite.anchorPoint = CGPointZero;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "Background.h"
+#import "GameConstants.h"
 #import "Player.h"
 #import "CCDirector.h"
 #import "CCScene.h"
@@ -26,17 +27,18 @@
 	self = [super init];
 	if( self != NULL )
 	{
-	
-	
+		self.anchorPoint = CGPointZero;
+		self.scale = gameSizeScale;
+		[self setContentSize:CGSizeMake( gameWidth * gameSizeScale, gameHeight * gameSizeScale )];
+
 		m_player = [[Player alloc] init];
 		m_background = [[Background alloc] init];
 		
 		[self addChild:m_player z:1];
 		[self addChild:m_background z:-1];
 		
-		CGSize winSize = [[CCDirector sharedDirector] winSize];
-		m_worldRect = CGRectMake( 0.0f, 0.0f, winSize.width * 10.0f, winSize.height );
-		m_cameraRect = CGRectMake( 0.0f, 0.0f, winSize.width, winSize.height );
+		m_worldRect = CGRectMake( 0.0f, 0.0f, gameWidth * 10.0f, gameHeight );
+		m_cameraRect = CGRectMake( 0.0f, 0.0f, gameWidth, gameHeight );
 		
 		m_moveSpeed = 2.0f;
 		

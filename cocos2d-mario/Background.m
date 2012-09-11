@@ -7,6 +7,7 @@
 //
 
 #import "Background.h"
+#import "GameConstants.h"
 #import "CCDirector.h"
 #import "CCSprite.h"
 #import "CCTextureCache.h"
@@ -21,9 +22,9 @@
 		m_bgSprites = [[NSMutableArray alloc] init];
 
 		CCTexture2D *bgTexture = [[CCTextureCache sharedTextureCache] addImage:@"background.png"];
+		[bgTexture setAliasTexParameters];
 		m_bgSize = CGSizeMake( bgTexture.pixelsWide, bgTexture.pixelsHigh );
-		CGSize winSize = [[CCDirector sharedDirector] winSize];
-		int numImages = ceil( winSize.width / m_bgSize.width ) + 1;
+		int numImages = ceil( gameWidth / m_bgSize.width ) + 1;
 		for( int ii = 0; ii < numImages; ++ii )
 		{
 			CCSprite *bgSprite = [CCSprite spriteWithTexture:bgTexture];
@@ -45,9 +46,8 @@
 
 - (void)updateFromRect:(CGRect)rect
 {
-	CGSize winSize = [[CCDirector sharedDirector] winSize];
 	float xOffset = rect.origin.x;
-	while( xOffset >= winSize.width )
+	while( xOffset >= gameWidth )
 	{
 		xOffset -= m_bgSize.width;
 	}
