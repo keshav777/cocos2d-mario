@@ -21,7 +21,8 @@ typedef enum
 typedef enum
 {
 	Idle,
-	Moving,
+	Walking,
+	WalkingMax,
 } State;
 
 @interface Player : CCLayer
@@ -31,6 +32,8 @@ typedef enum
 	BOOL m_flipped;
 	float m_velocity;
 	float m_targetVelocity;
+	float m_oscillationTime;
+	int m_oscillationIndex;
 	Direction m_dir;
 	State m_state;
 	CCSprite *m_playerSprite;
