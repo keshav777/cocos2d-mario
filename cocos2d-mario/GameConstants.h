@@ -17,3 +17,5 @@ static const float playerMaxOscWalkVel = 21.0f;
 static const int oscillationFrameCount = 5;
 static const float oscillationFrameDuration = 1.0f / framesPerSecond;
 static const float oscillationAccTable[ oscillationFrameCount ] = { 60.0f, -40.0f, -40.0f, 60.0f, -40.0f };
+static const float maxWalkFrameDuration = 6.0f * ( 1.0f / framesPerSecond );
+static const int maxWalkFrameCount = 3;

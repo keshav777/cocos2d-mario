@@ -34,6 +34,8 @@ typedef enum
 	float m_targetVelocity;
 	float m_oscillationTime;
 	int m_oscillationIndex;
+	float m_maxWalkAnimTime;
+	int m_maxWalkAnimIndex;
 	Direction m_dir;
 	State m_state;
 	CCSprite *m_playerSprite;

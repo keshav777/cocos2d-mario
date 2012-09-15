@@ -21,7 +21,7 @@
 
 - (void)buildPlayerSprite;
 - (void)updateVelocity:(float)deltaTime;
-- (void)updateSprite;
+- (void)updateSprite:(float)deltaTime;
 
 @end
 
@@ -41,6 +41,8 @@
 		m_targetVelocity = 0.0f;
 		m_oscillationTime = 0.0f;
 		m_oscillationIndex = 0;
+		m_maxWalkAnimTime = 0.0f;
+		m_maxWalkAnimIndex = 0;
 		m_dir = Right;
 		m_state = Idle;
 		m_playerSprite = NULL;
@@ -60,10 +62,8 @@
 	position.x += m_velocity * playerVelScale * deltaTime;
 	[self setPosition:position];
 
-	NSLog( @"%f\n", m_velocity );
-
 	[self updateVelocity:deltaTime];
-	[self updateSprite];
+	[self updateSprite:deltaTime];
 }
 
 - (void)dealloc
@@ -112,7 +112,9 @@
 	if( !CGPointEqualToPoint( position, m_position ) )
 	{
 		m_position = position;
-		[m_playerSprite setPosition:m_position];
+		CGPoint pixelPos = m_position;
+		pixelPos.x = floor( pixelPos.x );
+		[m_playerSprite setPosition:pixelPos];
 	}
 }
 
@@ -149,8 +151,8 @@
 	{
 		case Idle:
 			{
-				m_dir = signbit( toTargetVel ) ? Left : Right;
-				if( m_dir == Left )
+				Direction dir = signbit( toTargetVel ) ? Left : Right;
+				if( dir == Left )
 				{
 					m_velocity = MAX( 0.0f, m_velocity - ( playerAcc * deltaTime ) );
 				}
@@ -162,8 +164,8 @@
 			break;
 		case Walking:
 			{
-				m_dir = signbit( toTargetVel ) ? Left : Right;
-				if( m_dir == Left )
+				Direction dir = signbit( toTargetVel ) ? Left : Right;
+				if( dir == Left )
 				{
 					m_velocity = MAX( -playerMaxWalkVel, m_velocity - ( playerAcc * deltaTime ) );
 				}
@@ -215,8 +217,9 @@
 	}
 }
 
-- (void)updateSprite
+- (void)updateSprite:(float)deltaTime
 {
+/*
 	if( m_velocity != 0.0f )
 	{
 		if( ABS( m_velocity ) < 3.0f )
@@ -227,6 +230,44 @@
 		{
 			[m_playerSprite setDisplayFrame:[m_frames objectAtIndex:1]];
 		}
+	}*/
+	
+	switch( m_state )
+	{
+		case Idle:
+			[m_playerSprite setDisplayFrame:[m_frames objectAtIndex:0]];
+			break;
+		case Walking:
+			{
+				if( ABS( m_velocity ) < 3.0f )
+				{
+					[m_playerSprite setDisplayFrame:[m_frames objectAtIndex:0]];
+				}
+				else
+				{
+					[m_playerSprite setDisplayFrame:[m_frames objectAtIndex:1]];
+				}
+				
+				m_maxWalkAnimTime = 0.0f;
+				m_maxWalkAnimIndex = 1;
+			}
+			break;
+		case WalkingMax:
+			{
+				m_maxWalkAnimTime += deltaTime;
+				while( m_maxWalkAnimTime >= maxWalkFrameDuration )
+				{
+					m_maxWalkAnimTime = MAX( 0.0f, m_maxWalkAnimTime - maxWalkFrameDuration );
+					++m_maxWalkAnimIndex;
+					if( m_maxWalkAnimIndex >= maxWalkFrameCount )
+					{
+						m_maxWalkAnimIndex = 0;
+					}
+				}
+				
+				[m_playerSprite setDisplayFrame:[m_frames objectAtIndex:m_maxWalkAnimIndex]];
+			}
+			break;
 	}
 }
 
