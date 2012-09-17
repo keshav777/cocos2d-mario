@@ -8,15 +8,17 @@
 
 #import "CCLayer.h"
 
+@class CCScene;
 @class Background;
 @class Player;
-@class CCScene;
+@class World;
 
 @interface Game : CCLayer
 {
 @private
 	Player *m_player;
 	Background *m_background;
+	World *m_world;
 	CGRect m_worldRect;
 	CGRect m_cameraRect;
 	float m_moveSpeed;

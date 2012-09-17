@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="world" tilewidth="16" tileheight="16" spacing="2" margin="2">
+  <image source="world.png" width="64" height="64"/>
+ </tileset>
+ <layer name="World" width="20" height="20">
+  <properties>
+   <property name="collide" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6AFYkTG3zyDEbl35y3UmMeaRgdipjRipjABdvAV8=
+  </data>
+ </layer>
+</map>

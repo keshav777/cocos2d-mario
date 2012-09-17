@@ -11,6 +11,7 @@
 @class CCAction;
 @class CCScene;
 @class CCSprite;
+@class World;
 
 typedef enum
 {
@@ -27,6 +28,7 @@ typedef enum
 
 @interface Player : CCLayer
 {
+@private
 	CGPoint m_position;
 	CGSize m_size;
 	BOOL m_flipped;
@@ -40,9 +42,12 @@ typedef enum
 	State m_state;
 	CCSprite *m_playerSprite;
 	NSMutableArray *m_frames;
+	World *m_world;
 }
 
 @property (nonatomic, assign) CGPoint position;
+
+- (id)initWithWorld:(World *)world;
 
 - (void)update:(ccTime)deltaTime;
 

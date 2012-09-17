@@ -7,11 +7,12 @@
 //
 
 #import "Game.h"
+#import "CCDirector.h"
+#import "CCScene.h"
 #import "Background.h"
 #import "GameConstants.h"
 #import "Player.h"
-#import "CCDirector.h"
-#import "CCScene.h"
+#import "World.h"
 
 @interface Game (Private)
 
@@ -31,11 +32,13 @@
 		self.scale = gameSizeScale;
 		[self setContentSize:CGSizeMake( gameWidth * gameSizeScale, gameHeight * gameSizeScale )];
 
-		m_player = [[Player alloc] init];
+		m_world = [[World alloc] init];
+		m_player = [[Player alloc] initWithWorld:m_world];
 		m_background = [[Background alloc] init];
 		
 		[self addChild:m_player z:1];
-		[self addChild:m_background z:-1];
+		[self addChild:m_background z:-2];
+		[self addChild:m_world z:-1];
 		
 		m_worldRect = CGRectMake( 0.0f, 0.0f, gameWidth * 10.0f, gameHeight );
 		m_cameraRect = CGRectMake( 0.0f, 0.0f, gameWidth, gameHeight );

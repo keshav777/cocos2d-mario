@@ -122,6 +122,10 @@
 		D82D7EA615F5B1270004DE94 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D82D7EA515F5B1270004DE94 /* vec4.c */; };
 		D82D7EAB15F5B1270004DE94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D82D7EAA15F5B1270004DE94 /* main.m */; };
 		D82D7EAE15F5B1270004DE94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D82D7EAD15F5B1270004DE94 /* AppDelegate.m */; };
+		D8861B941606C9AF002369A4 /* world.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8861B911606C9AF002369A4 /* world.plist */; };
+		D8861B951606C9AF002369A4 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = D8861B921606C9AF002369A4 /* world.png */; };
+		D8861B961606C9AF002369A4 /* world.tmx in Resources */ = {isa = PBXBuildFile; fileRef = D8861B931606C9AF002369A4 /* world.tmx */; };
+		D8861B9A1606C9CA002369A4 /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = D8861B991606C9CA002369A4 /* World.m */; };
 		D8D112BF15F5B1FE00C5DCBF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D112BC15F5B1FE00C5DCBF /* background.png */; };
 		D8D112C015F5B1FE00C5DCBF /* player.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8D112BD15F5B1FE00C5DCBF /* player.plist */; };
 		D8D112C115F5B1FE00C5DCBF /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D112BE15F5B1FE00C5DCBF /* player.png */; };
@@ -383,6 +387,11 @@
 		D82D7EAA15F5B1270004DE94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D82D7EAC15F5B1270004DE94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D82D7EAD15F5B1270004DE94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D8861B911606C9AF002369A4 /* world.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = world.plist; path = Resources/world.plist; sourceTree = "<group>"; };
+		D8861B921606C9AF002369A4 /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = world.png; path = Resources/world.png; sourceTree = "<group>"; };
+		D8861B931606C9AF002369A4 /* world.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world.tmx; path = Resources/world.tmx; sourceTree = "<group>"; };
+		D8861B981606C9CA002369A4 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		D8861B991606C9CA002369A4 /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
 		D8D112B415F5B1E500C5DCBF /* Background.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		D8D112B515F5B1E500C5DCBF /* Background.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		D8D112B615F5B1E500C5DCBF /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -454,6 +463,9 @@
 				D82D7D4715F5B1250004DE94 /* Info.plist */,
 				D8D112BD15F5B1FE00C5DCBF /* player.plist */,
 				D8D112BE15F5B1FE00C5DCBF /* player.png */,
+				D8861B911606C9AF002369A4 /* world.plist */,
+				D8861B921606C9AF002369A4 /* world.png */,
+				D8861B931606C9AF002369A4 /* world.tmx */,
 			);
 			name = Resources;
 			path = "cocos2d-mario";
@@ -837,6 +849,8 @@
 				D81EFBC115FB0B54005B65B3 /* GameConstants.h */,
 				D8D112B815F5B1E500C5DCBF /* Player.h */,
 				D8D112B915F5B1E500C5DCBF /* Player.m */,
+				D8861B981606C9CA002369A4 /* World.h */,
+				D8861B991606C9CA002369A4 /* World.m */,
 			);
 			name = Code;
 			path = "cocos2d-mario";
@@ -901,6 +915,9 @@
 				D8D112BF15F5B1FE00C5DCBF /* background.png in Resources */,
 				D8D112C015F5B1FE00C5DCBF /* player.plist in Resources */,
 				D8D112C115F5B1FE00C5DCBF /* player.png in Resources */,
+				D8861B941606C9AF002369A4 /* world.plist in Resources */,
+				D8861B951606C9AF002369A4 /* world.png in Resources */,
+				D8861B961606C9AF002369A4 /* world.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,6 +1035,7 @@
 				D82D7EA615F5B1270004DE94 /* vec4.c in Sources */,
 				D82D7EAB15F5B1270004DE94 /* main.m in Sources */,
 				D82D7EAE15F5B1270004DE94 /* AppDelegate.m in Sources */,
+				D8861B9A1606C9CA002369A4 /* World.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

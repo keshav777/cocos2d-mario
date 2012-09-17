@@ -6,9 +6,6 @@
 //
 //
 
-#import "Player.h"
-#import "Background.h"
-#import "GameConstants.h"
 #import "CCActionInterval.h"
 #import "CCActionInstant.h"
 #import "CCAnimation.h"
@@ -16,6 +13,10 @@
 #import "CCParallaxNode.h"
 #import "CCSprite.h"
 #import "CCSpriteFrameCache.h"
+#import "Player.h"
+#import "Background.h"
+#import "GameConstants.h"
+#import "World.h"
 
 @interface Player (Private)
 
@@ -29,7 +30,7 @@
 
 @synthesize position = m_position;
 
-- (id)init
+- (id)initWithWorld:(World *)world;
 {
 	self = [super init];
 	if( self != NULL )
@@ -47,6 +48,7 @@
 		m_state = Idle;
 		m_playerSprite = NULL;
 		m_frames = [[NSMutableArray alloc] init];
+		m_world = world;
 		
 		[self buildPlayerSprite];
 		
@@ -115,6 +117,8 @@
 		CGPoint pixelPos = m_position;
 		pixelPos.x = floor( pixelPos.x );
 		[m_playerSprite setPosition:pixelPos];
+		
+		
 	}
 }
 
@@ -245,7 +249,7 @@
 				}
 				else
 				{
-					[m_playerSprite setDisplayFrame:[m_frames objectAtIndex:1]];
+					[m_playerSprite setDisplayFrame:[m_frames objectAtIndex:2]];
 				}
 				
 				m_maxWalkAnimTime = 0.0f;
@@ -258,10 +262,10 @@
 				while( m_maxWalkAnimTime >= maxWalkFrameDuration )
 				{
 					m_maxWalkAnimTime = MAX( 0.0f, m_maxWalkAnimTime - maxWalkFrameDuration );
-					++m_maxWalkAnimIndex;
-					if( m_maxWalkAnimIndex >= maxWalkFrameCount )
+					--m_maxWalkAnimIndex;
+					if( m_maxWalkAnimIndex < 0 )
 					{
-						m_maxWalkAnimIndex = 0;
+						m_maxWalkAnimIndex = 2;
 					}
 				}
 				
